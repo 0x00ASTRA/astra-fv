@@ -1,0 +1,15 @@
+[package]
+name = "astra-fv"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+colored = "2.2.0"
+hex-literal = "0.4.1"
+sha2 = "0.10.8"
+
+[profile.release]
+opt-level = "z"      # Optimize for binary size
+lto = true           # Enable Link Time Optimization
+panic = "abort"      # Reduce binary size by removing stack unwinding
+codegen-units = 1    # Maximize optimizations at the cost of longer build times
